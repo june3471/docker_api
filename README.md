@@ -6,4 +6,5 @@
 ### Dockerfile build
 Dockerfile build
 - docker build -t "tag name" .
+
 You should change docker-compose.yml same to your tag name
