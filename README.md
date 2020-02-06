@@ -8,3 +8,9 @@ Dockerfile build
 - docker build -t "tag name" .
 
 You should change docker-compose.yml same to your tag name
+
+### when using inception rest api
+curl -F "file=@dog1-4.jpg" http://localhost:5000/inception/predict/
+
+### when using yolov3 rest api
+curl -F "instances=@dog1-4.jpg" -F "class=@coco.names" -H "size:416" -H "thresh:0.5" http://localhost:5000/yolov3/predict/
