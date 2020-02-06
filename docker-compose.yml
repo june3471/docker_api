@@ -10,7 +10,7 @@ services:
       - "8501:8501"
     networks:
         appnet:
-            ipv4_address: 172.18.0.4
+            ipv4_address: 172.18.18.04
   yolov3:
     image: tensorflow/serving:2.1.0-rc1
     volumes:
@@ -21,7 +21,7 @@ services:
       - "8502:8501"
     networks:
         appnet:
-            ipv4_address: 172.18.0.5
+            ipv4_address: 172.18.18.05
   flask:
     image: june3471/tensorflow_api
     volumes:
@@ -30,16 +30,16 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - inception_ip=172.18.0.4
-      - yolov3_ip=172.18.0.5
+      - inception_ip=172.18.18.04
+      - yolov3_ip=172.18.18.05
     command: python3 mnt/app.py
     networks:
         appnet:
-            ipv4_address: 172.18.0.3
+            ipv4_address: 172.18.18.03
 networks:
     appnet:
         ipam:
             driver: default
             config:
-            - subnet: 172.18.0.0/16
-              gateway: 172.18.0.1
+            - subnet: 172.18.18.0/24
+              gateway: 172.18.18.1
